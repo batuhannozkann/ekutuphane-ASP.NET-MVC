@@ -1,0 +1,56 @@
+@{Layout = "_LayoutNoCategories";}
+@model CategoryModel
+<form asp-controller="Admin" asp-action="EditCategory" method="POST"class="ml-3" >
+<div class="row">
+<div class="col-4">
+<div class="mb-3">
+<input type="hidden" name="CategoryId" value="@Model.CategoryId">
+  <label asp-for="CategoryName" class="form-label">Kategori Adı</label>
+  <input class="form-control" asp-for="CategoryName">
+</div>
+<div class="mb-3">
+  <label asp-for="CategoryUrl" class="form-label">Kategori Url</label>
+  <input class="form-control" asp-for="CategoryUrl">
+</div>
+<button type="submit" class="btn btn-primary">Kategori Güncelle</button>
+</div>
+<div class="col-1">
+</div>
+<div>
+@for(int j=0;j<Model.BookCategory.Count;j++)
+{
+    <input type="hidden" name="BookCategory[@j].BookId" value="@Model.BookCategory[j].BookId">
+    <input type="hidden" name="BookCategory[@j].BookName" value="@Model.BookCategory[j].BookName">
+    <input type="hidden" name="BookCategory[@j].AuthorName" value="@Model.BookCategory[j].AuthorName">
+    <input type="hidden" name="BookCategory[@j].BookPage" value="@Model.BookCategory[j].BookPage">
+    <input type="hidden" name="BookCategory[@j].Description" value="@Model.BookCategory[j].Description">
+    <input type="hidden" name="BookCategory[@j].ImageUrl" value="@Model.BookCategory[j].ImageUrl">
+}
+</div>
+<div class="col-7 row mt-3">
+    @foreach( var book in Model.BookList)
+    {
+    <div class="col-3"> 
+        <div class="card">
+            <div class="card-header">
+                <a asp-controller="Library" asp-action="Detail" asp-route-id="@book.BookId" >@book.BookName</a>
+            </div>
+            <div class="card-body">
+                <img class="card-img" height="200" src="~/images/@book.ImageUrl"> 
+            </div>
+            <div class="card-footer">
+            <input type="hidden" name="BookId" value="@book.BookId">
+                <a asp-controller="Admin" asp-action="EditBook" asp-route-id="@book.BookId" class="btn btn-primary" style="Color:White;">Düzenle</a> <a asp-controller="Admin" asp-action="DeleteBookinCategory" asp-route-BookId="@book.BookId" asp-route-CategoryId="@Model.CategoryId" asp-route-categoryname="@Model.CategoryName" class="btn btn-danger" style="Color:White;">Sil</a>
+            </div>
+        </div>
+    </div>}
+    <nav aria-label="Page navigation example" class="col-12 mt-3">
+    <ul class="pagination">
+  @for(int i =1; i<=Model.BookList.PageCount;i++)
+  {
+   <li class="page-item"><a asp-controller="Admin" asp-action="EditCategory" asp-route-categoryname="@Model.CategoryName" asp-route-page="@i" class="page-link" >@i</a></li>
+  }</ul>
+  </nav>
+</div>
+</form>
+

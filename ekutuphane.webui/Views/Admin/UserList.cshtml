@@ -1,0 +1,48 @@
+@{Layout = "_LayoutNoCategories";}
+@model IEnumerable<User>
+@section Css
+{
+    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+}
+@section Scripts
+{
+    <script src="//cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready( function () {
+        $('#myTable').DataTable();}
+        );
+    </script>
+}
+<table data-page-length='7' class="table table-bordered" id="myTable">
+    <thead>
+        <tr>
+            <td>İsim</td>
+            <td>Soyisim</td>
+            <td>Kullanıcı Adı</td>
+            <td>Email</td>
+            <td>EmailConfirmed</td>
+            <td style="width:160px;"></td>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach(var user in Model)
+    {
+        <tr>
+            <td>@user.FirstName</td>
+            <td>@user.LastName</td>
+            <td>@user.UserName</td>
+            <td>@user.Email</td>
+            <td>@user.EmailConfirmed</td>
+            <td>
+                <a asp-controller="Admin" asp-action="UserEdit" asp-route-UserId="@user.Id" class="btn btn-primary btn">Düzenle
+                </a>
+                    <form asp-controller="Admin" asp-action="DeleteUser" method="POST">
+                    <input type="hidden" value="@user.Id" name="id">
+                        <button type="submit" class="btn btn-danger btn mt-2">Sil
+                        </button>
+                    </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

@@ -1,0 +1,32 @@
+
+@{
+    Layout="_LayoutNoCategories";
+}
+@model BookViewModel
+<div class="">
+<table class="talbe table-bordered col-12">
+<thead>
+<tr class="row">
+<th class="col-1">Kitap Id</th>
+<th class="col-5">Kitabın Adı</th>
+<th class="col-2">Kitabın Yazarı</th>
+<th class="col-2">Kitabın Resmi</th>
+<th class="col-2"></th>
+</tr>
+</thead>
+<tbody>
+@foreach(var book in Model.Books)
+{
+<tr class="row ">
+<td class="col-1">@book.BookId</td>
+<td class="col-5">@book.BookName</td>
+<td class="col-2">@book.AuthorName</td>
+<td class="col-2"><img src="~/images/@book.ImageUrl" height="200"></td>
+<td class="col-2"><a class="btn btn-primary mt-5 ml-5" asp-controller="Admin" asp-action="EditBook" asp-route-id="@book.BookId" role="button">Düzenle</a>
+<form asp-controller="Admin" asp-action="Delete" method="POST">
+<input type="hidden" name="id" value="@book.BookId">
+<button type="submit" class="btn btn-danger ml-5 mt-3">Sil</button></form></td>
+</tr>}
+</tbody>
+</table>
+</div>

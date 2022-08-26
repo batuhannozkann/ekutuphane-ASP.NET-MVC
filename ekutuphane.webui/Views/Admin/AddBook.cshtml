@@ -1,0 +1,49 @@
+@{
+    Layout="_LayoutNoCategories";
+}
+@model BookModel
+<form asp-controller="Admin" asp-action="AddBook" method="POST"class="ml-3 row"  enctype="multipart/form-data" >
+<div class="col-8">
+<div class="mb-3">
+<div asp-validation-summary="All" class="text-danger"></div>
+  <label asp-for="BookName" class="form-label">Kitap Adı</label>
+  <input class="form-control" asp-for="BookName">
+</div>
+<div class="mb-3">
+  <label asp-for="AuthorName" class="form-label">Yazar Adı</label>
+  <input class="form-control" asp-for="AuthorName">
+</div>
+<div class="mb-3">
+ <label asp-for="BookPage" class="form-label">Sayfa Sayısı</label>
+  <input class="form-control" asp-for="BookPage">
+</div>
+<div class="mb-3">
+  <label asp-for="Description" class="form-label">Açıklama</label>
+  <textarea class="form-control" rows="4" asp-for="Description"></textarea>
+</div>
+<div class="mb-3">
+  <div class="mb-3">
+  <label for="formFile" class="form-label">Resim Ekle</label>
+  <input class="form-control" type="file" name="file" id="formFile">
+</div>
+<div class="mb-3">
+  <div class="mb-3">
+  <label for="formFile" class="form-label">Pdf ekle</label>
+  <input class="form-control" type="file" name="Pdf" id="formFile">
+</div>
+</div>
+</div>
+<button type="submit" class="btn-primary" value="Submit">Kitabı Ekle</button>
+</div>
+<div class="col-1">
+</div>
+
+<div class="col-3 pt-5">
+@foreach(var cat in (List<Category>)ViewBag.Categories)
+{
+<div class="form-check">
+  <input class="form-check-input" type="checkbox" id="check1" name="categoryId" value="@cat.CategoryId">
+  <label class="form-check-label">@cat.CategoryName</label>
+</div>}
+</div>
+</form>

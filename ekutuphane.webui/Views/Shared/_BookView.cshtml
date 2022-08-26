@@ -1,0 +1,20 @@
+
+@model Book
+     <div class="col">
+          <div class="card shadow">
+          <a class="card-title text-center mt-2 text-dark text" asp-controller="Library" asp-action="Detail" asp-route-id="@Model.BookId">@Model.BookName</a>
+            <img class="img-fluid card-img" style="min-height:435px;" src=~/images/@Model.ImageUrl>
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a class="btn btn-sm btn-outline-secondary" asp-controller="Library" asp-action="Detail" asp-route-id="@Model.BookId">İncele</a>
+                  @if(User.Identity.IsAuthenticated)
+                  {<a class="btn btn-sm btn-outline-secondary" asp-controller="Library" asp-action="ViewPdf" asp-route-BookName="@Model.PdfUrl">İndir</a>}
+                  @if(!User.Identity.IsAuthenticated)
+                  {<a class="btn btn-sm btn-outline-secondary" asp-controller="Account" asp-action="Login">İndir</a>}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    

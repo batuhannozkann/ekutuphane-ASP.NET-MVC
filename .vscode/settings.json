@@ -1,0 +1,10 @@
+{
+    "omnisharp.path":"latest",
+    "omnisharp.projectLoadTimeout": 1200,
+    "csharp.unitTestDebuggingOptions": {
+    
+    }
+    
+    
+
+}

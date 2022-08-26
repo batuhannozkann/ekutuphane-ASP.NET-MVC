@@ -1,0 +1,25 @@
+@{Layout="_LayoutNoCategories";}
+@model ListModel
+<div class="">
+<table class="talbe table-bordered col-12">
+<thead>
+    <tr class="row">
+        <th class="col-2">Kategori Id</th>
+        <th class="col-8">Kategori Adı</th>
+        <th class="col-2"></th>
+    </tr>
+</thead>
+<tbody>
+@foreach(var cat in Model.Categories)
+{
+<tr class="row ">
+    <td class="col-2">@cat.CategoryId</td>
+    <td class="col-8">@cat.CategoryName</td>
+    <td class="col-2"><a class="btn btn-primary mt-5 ml-5" asp-controller="Admin" asp-action="EditCategory" asp-route-categoryname="@cat.CategoryName" role="button">Düzenle</a>
+<form asp-controller="Admin" asp-action="DeleteCategory" method="POST">
+<input type="hidden" name="id" value="@cat.CategoryId">
+<button type="submit" class="btn btn-danger ml-5 mt-3 mb-3">Sil</button></form></td>
+</tr>}
+</tbody>
+</table>
+</div>

@@ -1,0 +1,67 @@
+<nav class="navbar navbar-expand-lg bg-dark py-4">
+  <div class="container-fluid row">
+    <a class="navbar-brand col-1" asp-controller="Library" asp-action="BookList"><img class="img-fluid"src="~/images/logo-png.png"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon text-info">Menu</span>
+    </button>
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav mb-2 mb-lg-0">
+        <li class="nav-item pl-3">
+          <a class="nav-link text-warning" aria-current="page" asp-controller="Library" asp-action="BookList" asp-route-kategori="">Anasayfa</a>
+        </li>
+        <li class="nav-item pl-3">
+          <a class="nav-link text-warning" asp-controller="Library" asp-action="RecommendedBooks">Önerilenler</a>
+        </li>
+        <li class="nav-item pl-3 dropdown">
+          <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Kategoriler
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          @foreach(var cat in (List<Category>)ViewBag.Categories)
+          {
+            <li><a class="dropdown-item" asp-controller="Library" asp-action="BookList" asp-route-kategori="@cat.CategoryName">@cat.CategoryName</a></li>
+          }
+          </ul>
+          </li>
+          @if(User.IsInRole("Admin"))
+          {
+          <li class="nav-item pl-3 dropdown">
+          <a class="nav-link dropdown-toggle text-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Admin
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" asp-controller="Admin" asp-action="AddBook">Kitap Ekle</a></li>
+            <li><a class="dropdown-item" asp-controller="Admin" asp-action="BookList" >Kitap Listesi</a></li>
+            <li><a class="dropdown-item" asp-controller="Admin" asp-action="AddCategory" >Kategori Ekle</a></li>
+            <li><a class="dropdown-item" asp-controller="Admin" asp-action="CategoryList" >Kategori Listesi</a></li>
+            <li><a class="dropdown-item" asp-controller="Admin" asp-action="RoleList" >Rol Listesi</a></li>
+            <li><a class="dropdown-item" asp-controller="Admin" asp-action="UserList" >User Listesi</a></li>
+          </ul>
+          </li>
+          }
+          <form class="d-flex pl-5 ml-5" role="search" asp-controller="Library" asp-action="SearchBook" method="GET">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      @if(User.Identity.IsAuthenticated)
+      {
+          <li>
+          <a class="nav-link text-info" href="#"><b>@User.Identity.Name</b></a>
+          </li>
+          <li class="nav-item pl-3">
+          <a class="nav-link text-warning" asp-controller="Account" asp-action="Logout"><b>Çıkış Yap</b></a>
+          </li>
+      }
+      else{
+            <li class="nav-item">
+            <a class="nav-link text-warning" aria-current="page" asp-controller="Account" asp-action="Login"><b>Giriş Yap</b></a>
+            </li>
+            <li class="nav-item pl-3">
+            <a class="nav-link text-warning" asp-controller="Account" asp-action="Register"><b>Kayıt Ol</b></a>
+            </li>
+          }</ul>
+    </div>
+  </div>
+</nav>

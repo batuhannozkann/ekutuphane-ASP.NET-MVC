@@ -1,0 +1,12 @@
+@model List<Category>
+<div>
+          <a asp-controller="Library" asp-action="BookList" asp-route-kategori="" class=" text-white list-group-item list-group-item-action @(ViewBag.RouteCat==null?"bg-info":"bg-dark ")" aria-current="true">
+          Kategoriler
+          </a>
+    
+    @foreach(var cat in Model)
+    {
+        
+        <a asp-controller="Library" asp-action="BookList" asp-route-kategori="@cat.CategoryName" class=" text-white list-group-item list-group-item-action @(ViewBag.SelectedCategory?.ToLower()==cat.CategoryName.ToLower()?"bg-info":"bg-dark")">@cat.CategoryName</a>
+    }
+    </div>

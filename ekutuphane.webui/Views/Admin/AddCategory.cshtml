@@ -1,0 +1,14 @@
+@{Layout = "_LayoutNoCategories";}
+@model CategoryModel
+<form asp-controller="Admin" asp-action="AddCategory" method="POST"class="ml-3 row" >
+<div class="col-8">
+<div class="mb-3">
+  <label asp-for="CategoryName" class="form-label">Kategori Adı</label>
+  <input class="form-control" asp-for="CategoryName">
+</div>
+<div class="mb-3">
+  <label asp-for="CategoryUrl" class="form-label">Kategori Url</label>
+  <input class="form-control" asp-for="CategoryUrl">
+</div>
+<button type="submit" class="btn btn-primary">Kategori Ekle</button>
+</form>

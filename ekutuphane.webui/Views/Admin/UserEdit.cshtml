@@ -1,0 +1,42 @@
+@{Layout = "_LayoutNoCategories";}
+@model UserDetailModel
+<form asp-controller="Admin" asp-action="UserEdit" method="POST"class="ml-3 row" >
+<div class="col-8">
+<div class="mb-3">
+<input type="hidden" asp-for="UserId" value="@Model.UserId">
+<div asp-validation-summary="All" class="text-danger"></div>
+  <label asp-for="FirstName" class="form-label">İsim</label>
+  <input class="form-control" asp-for="FirstName">
+</div>
+<div class="mb-3">
+  <label asp-for="LastName" class="form-label">Soyisim</label>
+  <input class="form-control" asp-for="LastName">
+</div>
+<div class="mb-3">
+  <label asp-for="UserName" class="form-label">Kullanıcı Adı</label>
+  <input class="form-control" asp-for="UserName">
+</div>
+<div class="mb-3">
+ <label asp-for="Email" class="form-label">Email Adresi</label>
+  <input class="form-control" asp-for="Email">
+</div>
+<button type="submit" class="btn-primary" value="Submit">Kullanıcıyı Güncelle</button>
+</div>
+<div class="col-2 pt-5">
+@foreach(var roles in ViewBag.Roles)
+{
+<div class="form-check">
+  <input class="form-check-input"  type="checkbox" id="check1" name="selectedRoles" value="@roles" @(Model.SelectedRoles.Any(a=>a==roles)?"checked":"")>
+  <label class="form-check-label">@roles</label>
+</div>}
+<div class="form-check mt-5">
+  <input class="form-check-input"  type="checkbox" asp-for="EmailConfirmed">
+  <label class="form-check-label">EmailConfirmed</label>
+</div>
+</div>
+</form>
+@section Scripts
+{
+    <script src="/modules/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="/modules/jquery-validation-unobtrusive/dist/jquery.validate.unobtrusive.min.js"></script>
+}

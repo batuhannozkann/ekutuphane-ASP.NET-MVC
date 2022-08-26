@@ -1,0 +1,35 @@
+@{
+    Layout="_ResLayout";
+}
+@model BookModel
+@section Detail
+{
+<div class="card mb-3">
+    <div class="card-body">
+        <div class="row no-gutters">
+            <div class="col-sm-3">
+                <img src="~/images/@Model.ImageUrl" class="card-img">
+            </div>
+            <div class="col-sm-8 ml-4">
+                
+                    <h5 class="card-title">@Model.BookName</h5>
+                    <p class="card-text"><b>Konu:</b>@Model.Description</p>
+                    <p class="card-text"><b>Sayfa:</b>@Model.BookPage</p>
+                    <p class="card-text"><b>Yazar:</b>@Model.AuthorName</p>
+                    <p><b>Kategori</b>
+                    @foreach(var cat in @Model.BookCategories)
+                    {
+                        <a href="/Books/@cat.CategoryName">@cat.CategoryName</a>
+                    
+                    
+                    }
+                    </p>
+                    @if(User.Identity.IsAuthenticated)
+                    {<a asp-controller="Library" asp-action="ViewPdf" asp-route-BookName="@Model.PdfUrl" class="btn btn-primary mt-5">İndir</a>}
+                    @if(!User.Identity.IsAuthenticated)
+                    {<a asp-controller="Account" asp-action="Login" class="btn btn-primary mt-5">İndir</a>}
+            
+            </div>
+        </div>
+    </div>
+</div>}
