@@ -1,5 +1,6 @@
 # ekutuphane-ASP.NET-MVC
-<b>Java Swing ile daha önceden Masaüstü için geliştirdiğim okul projemi WEB application olarak ASP.NET ile geliştirdim </b>
+<b>Java Swing ile daha önceden Masaüstü için geliştirdiğim okul projemi WEB application olarak ASP.NET ile geliştirdim.
+ ORM olarak EF Core 3.1 kullanılmıştır. </b>
 <h3>Projemde kullandığım Patternler</h3>
 UnitofWork Pattern
 Repository Pattern
