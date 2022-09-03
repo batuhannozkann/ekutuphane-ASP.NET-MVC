@@ -9,6 +9,4 @@ N Layer Architecture (Çok Katmanlı Mimari)
 
 <h3>Test etmek isterseniz =></h3> https://elibrary.somee.com
 
-Admin özelliklerine erişebilmek için 
-Username:Admin1234
-Password:Admin1234
+
