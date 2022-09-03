@@ -10,3 +10,4 @@ N Layer Architecture (Çok Katmanlı Mimari)
 <h3>Test etmek isterseniz =></h3> https://elibrary.somee.com
 
 
+//Kitaplar telifsiz kitaplardan seçilmiştir kategoriler ise rastgele denemek amaçlı eklenmiştir düzenlenebilir.
