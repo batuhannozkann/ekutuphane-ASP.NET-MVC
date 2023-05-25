@@ -7,7 +7,7 @@ Repository Pattern
 <h3>Architecture(Mimari)</h3>
 N Layer Architecture (Çok Katmanlı Mimari)
 
-<h3>Test etmek isterseniz =></h3> https://elibrary.somee.com
+<h3>Test etmek isterseniz =></h3> https://elibrarydemo.somee.com
 
 
 //Kitaplar telifsiz kitaplardan seçilmiştir kategoriler ise rastgele denemek amaçlı eklenmiştir düzenlenebilir.
